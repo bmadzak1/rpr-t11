@@ -72,6 +72,10 @@ public class GeografijaDAO {
         }
     }
 
+    public Connection getConnection(){
+        return conn;
+    }
+
     public static GeografijaDAO getInstance(){
         if(instance == null)
             initialize();

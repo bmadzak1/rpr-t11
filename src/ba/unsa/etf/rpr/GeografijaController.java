@@ -62,4 +62,12 @@ public class GeografijaController {
 
         geografijaDAO.obrisiDrzavu(brisiNaziv.textProperty().get());
     }
+
+    public void report(ActionEvent actionEvent) {
+        try {
+            GradoviReport.getInstance().showReport(GeografijaDAO.getInstance().getConnection());
+        }catch (Exception e){
+
+        }
+    }
 }
