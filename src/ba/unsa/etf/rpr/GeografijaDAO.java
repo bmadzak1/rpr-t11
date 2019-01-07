@@ -176,6 +176,11 @@ public class GeografijaDAO {
 
     public void obrisiDrzavu(String drzava){
         try {
+            findDrzava.setString(1, drzava);
+            ResultSet set = findDrzava.executeQuery();
+            if(!set.next())
+                return;
+
             deleteDrzavaByName.setString(1, drzava);
             deleteGradFromDrzava.setString(1, drzava);
             deleteGradFromDrzava.executeUpdate();
@@ -269,9 +274,11 @@ public class GeografijaDAO {
             findGrad.setString(1,drzava.getGlavniGrad().getNaziv());
             ResultSet gradSet = findGrad.executeQuery();
 
-            updateGradDrzave.setInt(1, gradSet.getInt(1));
-            updateGradDrzave.setInt(2, id);
+            int gradID = gradSet.getInt(1);
 
+            updateGradDrzave.setInt(1, gradID);
+            updateGradDrzave.setInt(2, id);
+            updateGradDrzave.executeUpdate();
         }catch (Exception e){
 
         }
