@@ -77,7 +77,8 @@ public class GeografijaController {
 
     public void report(ActionEvent actionEvent) {
         try {
-            GradoviReport.getInstance().showReport(GeografijaDAO.getInstance().getConnection());
+            GradoviReport report = new GradoviReport();
+            report.showReport(GeografijaDAO.getInstance().getConnection());
         }catch (Exception e){
 
         }
@@ -129,7 +130,8 @@ public class GeografijaController {
 
         if(f != null){
             try{
-                GradoviReport.getInstance().saveAs(f.getAbsolutePath());
+                GradoviReport report = new GradoviReport();
+                report.saveAs(f.getAbsolutePath());
             }catch (Exception e){
 
             }
@@ -146,7 +148,8 @@ public class GeografijaController {
         }
 
         try {
-            GradoviReport.getInstance().showReportCountry(GeografijaDAO.getInstance().getConnection(), id);
+            GradoviReport report = new GradoviReport();
+            report.showReportCountry(GeografijaDAO.getInstance().getConnection(), id);
         }catch (Exception e){
 
         }

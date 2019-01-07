@@ -21,14 +21,6 @@ import java.util.HashMap;
 
 public class GradoviReport extends JFrame {
 
-    private static GradoviReport instance;
-
-    public static GradoviReport getInstance(){
-        if(instance == null)
-            instance = new GradoviReport();
-        return instance;
-    }
-
     public void showReport(Connection conn) throws JRException {
         String reportSrcFile = getClass().getResource("/reports/gradReport.jrxml").getFile();
         String reportsDir = getClass().getResource("/reports/").getFile();
