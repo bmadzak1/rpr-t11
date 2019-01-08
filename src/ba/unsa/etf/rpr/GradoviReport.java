@@ -48,22 +48,22 @@ public class GradoviReport extends JFrame {
         parameters.put("reportsDirPath", reportsDir);
         ArrayList<HashMap<String, Object>> list = new ArrayList<>();
         list.add(parameters);
-        JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, GeografijaDAO.getInstance().getConnection());
+        JasperPrint report = JasperFillManager.fillReport(jasperReport, parameters, GeografijaDAO.getInstance().getConnection());
         File f = new File(absPath);
         OutputStream outputStream = null;
         try{
             outputStream = new FileOutputStream(f);
+            if (absPath.contains(".pdf") )
+                JasperExportManager.exportReportToPdfStream(report, outputStream);
             if (absPath.contains(".docx") ) {
                 JRDocxExporter exporter = new JRDocxExporter();
-                exporter.setExporterInput(new SimpleExporterInput(print));
+                exporter.setExporterInput(new SimpleExporterInput(report));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(f));
                 exporter.exportReport();
             }
-            if (absPath.contains(".pdf") )
-                JasperExportManager.exportReportToPdfStream(print, outputStream);
             if (absPath.contains(".xslx") ) {
                 JRXlsxExporter exporter = new JRXlsxExporter();
-                exporter.setExporterInput(new SimpleExporterInput(print));
+                exporter.setExporterInput(new SimpleExporterInput(report));
                 exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(f));
                 SimpleXlsxReportConfiguration configuration = new SimpleXlsxReportConfiguration();
                 configuration.setOnePagePerSheet(true);

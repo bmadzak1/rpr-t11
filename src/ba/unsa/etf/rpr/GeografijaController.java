@@ -131,6 +131,7 @@ public class GeografijaController {
         if(f != null){
             try{
                 GradoviReport report = new GradoviReport();
+                System.out.println(f.getAbsolutePath());
                 report.saveAs(f.getAbsolutePath());
             }catch (Exception e){
 
