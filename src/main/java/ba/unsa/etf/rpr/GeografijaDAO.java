@@ -37,7 +37,7 @@ public class GeografijaDAO {
 
     private GeografijaDAO(){
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:baza.db");
+            conn = DriverManager.getConnection("jdbc:sqlite::resource:baza.db");
 
             kreirajBazu();
 
@@ -195,7 +195,7 @@ public class GeografijaDAO {
     }
 
     public ArrayList<Grad> gradovi(){
-        ArrayList<Grad> gradovi = new ArrayList<>();
+        ArrayList<Grad> gradovi = new ArrayList<Grad>();
         try{
             ResultSet gradoviSet = getGradoveSort.executeQuery();
             while (gradoviSet.next()){

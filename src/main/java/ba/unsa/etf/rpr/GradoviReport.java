@@ -1,6 +1,5 @@
 package ba.unsa.etf.rpr;
 
-import javafx.stage.FileChooser;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
@@ -10,9 +9,7 @@ import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 import net.sf.jasperreports.swing.JRViewer;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.sql.Connection;
@@ -44,7 +41,7 @@ public class GradoviReport extends JFrame {
         String reportSrcFile = getClass().getResource("/reports/gradReport.jrxml").getFile();
         String reportsDir = getClass().getResource("/reports/").getFile();
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
-        HashMap<String, Object> parameters = new HashMap<>();
+        HashMap<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("reportsDirPath", reportsDir);
         ArrayList<HashMap<String, Object>> list = new ArrayList<>();
         list.add(parameters);

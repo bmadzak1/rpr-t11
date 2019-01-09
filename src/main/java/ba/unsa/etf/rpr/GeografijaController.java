@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
@@ -108,7 +107,7 @@ public class GeografijaController {
         try {
             Stage primaryStage = (Stage) pretragaDrzavaIme.getScene().getWindow();
             ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-            Parent root = FXMLLoader.load(getClass().getResource("Geografija.fxml"), bundle);
+            Parent root = FXMLLoader.load(getClass().getResource("../../../../../resources/Geografija.fxml"), bundle);
             primaryStage.setTitle("Geografija");
             primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             primaryStage.setResizable(false);
